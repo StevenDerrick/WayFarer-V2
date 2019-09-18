@@ -2,6 +2,9 @@ import app from "../../server";
 import chai from "chai";
 import chaiHttp from "chai-http";
 import { doesNotReject } from "assert";
+import { users } from "../models/users";
+
+
 chai.use(chaiHttp);
 chai.should();
 const expect = chai.expect;

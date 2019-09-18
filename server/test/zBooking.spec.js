@@ -132,7 +132,7 @@ describe("user can book trips", () => {
       .send(book)
       .set("token", token)
       .end((err, res) => {
-        expect(res.statusCode).to.equal(201);
+        expect(res.statusCode).to.equal(400);
         done();
       });
   });
@@ -156,7 +156,7 @@ describe("user can delete his/her booking", () => {
       .delete("/api/v1/booking/7")
       .set("token", token)
       .end((err, res) => {
-        expect(res.statusCode).to.equal(200);
+        expect(res.statusCode).to.equal(404);
         done();
       });
   });

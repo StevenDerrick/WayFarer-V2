@@ -1,48 +1,21 @@
-# **Way-farer**
-
-## **Project description**
-
-Wayfare is an international bus transportation booking agency
-
-## **UI pages available**
-
-- [home page and signup] (https://izzett222.github.io/wayfarer-website/)
-
-- [sign in] (https://izzett222.github.io/wayfarer-website/UI/pages/login.html)
-
-- [user view trips and book] (https://izzett222.github.io/wayfarer-website/UI/pages/trips.html)
-
-- [user views bookings and delete booking] (https://izzett222.github.io/wayfarer-website/UI/pages/bookings.html)
-
-- [admin can cancel trips] (https://izzett222.github.io/wayfarer-website/UI/pages/admin-trips.html)
-
-- [admin can view all bookings] (https://izzett222.github.io/wayfarer-website/UI/pages/all-bookings.html)
-
-- [admin can create trips] (https://izzett222.github.io/wayfarer-website/UI/pages/create-trip.html)
-
-# **technology needed**
-
-- **mocha** - testing
-
-- **node** - runtime environment for javascript
-
-- **express** - fast and minimalist framework for node js
+# WayFarer-V2
+[![License Badge](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Maintainability](https://api.codeclimate.com/v1/badges/18d87c1ef7bfc1cc5523/maintainability)](https://codeclimate.com/github/StevenDerrick/Testing/maintainability)
+[![Build Status](https://travis-ci.org/StevenDerrick/Testing.svg?branch=develop)](https://travis-ci.org/StevenDerrick/Testing)
+[![Coverage Status](https://coveralls.io/repos/github/StevenDerrick/Testing/badge.svg?branch=develop)](https://coveralls.io/github/StevenDerrick/Testing?branch=develop)
+[![Contributors](https://img.shields.io/badge/contributors-1-orange.svg?style=flat-square)]()
 
 
-**testing**
-
-- npm test
-
-## **pivotal tracker story**
-
-[https://www.pivotaltracker.com/n/projects/2370110]
+>Free Mentors is a social initiative where accomplished professionals become role models to young people to provide free mentorship sessions.
 
 
-# **Author**
+__N.B:__ To be able to access admin panel and mentor homepage pages, you have to use this credentials.
+* For admin:
+    * Email: *admin@freementors.com*
+    * Password: admin@123
+* For a mentor:
+    * Email: *mentor@freementors.com*
+    * Password: mentor@123
 
-## **Ishimwe Serge Izzeddin**
-
-
-
-
-
+## Author:
+#### Steven Ishimwe

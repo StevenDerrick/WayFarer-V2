@@ -1,4 +1,5 @@
 import app from "../../server";
+import dotenv from 'dotenv';
 import chai from "chai";
 import chaiHttp from "chai-http";
 import jwt from "jsonwebtoken";
@@ -8,16 +9,18 @@ chai.use(chaiHttp);
 chai.should();
 const expect = chai.expect;
 
+dotenv.config();
+
 describe("user can view trips", () => {
   it("logged in user can view trips available", done => {
     const user = {
-      first_name: "izzedddin",
-      last_name: "ishidmwe",
-      email: "iizzeddi@gmail.com",
-      password: "izzseddin",
+      first_name: "Steven",
+      last_name: "ISHIMWE",
+      email: "kidiya@gmail.com",
+      password: "yego123",
       
     };
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImlpenplZGRpbjYyQGdtYWlsLmNvbSIsImlzX2FkbWluIjp0cnVlLCJpYXQiOjE1NjUzNDMxNTV9.tKjW5uMIG61nGhufJ5Rg3LQc6gKIZsv1vs-VbNh5wDs"
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImlpenplZGRpbjYyQGdtYWlsLmNvbSIsImlzX2FkbWluIjpmYWxzZSwiaWF0IjoxNTY4ODEzNTIwfQ.hMRR4PLRPRszowX_MgsoI55-V9jKmVgMP3gL9Yvjglg"
 
     chai
       .request(app)
@@ -291,4 +294,47 @@ describe("admin can cancel a trip", () => {
         done();
       });
   });
+  it("should return access denied when the user is not an admin", done => {
+    const user = {
+      first_name: "izzedddin",
+      last_name: "ishidmwe",
+      email: "ishimwesesdrg@gmail.com",
+      password: "izzseddin",
+      is_admin: true
+    };
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6Im1hY2liaXJpQGdtYWlsLmNvbSIsImlzX2FkbWluIjpmYWxzZSwiaWF0IjoxNTY4ODE0OTE1fQ.qpDUq0ey_7DhBiyiIil-FxmtGGBIs-rfADfDSd-rHrg'
+
+    chai
+      .request(app)
+      .post("/api/v1/trips")
+      .set("token", token)
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(403);
+        done();
+      });
+  });
+  it("should return all trips available", done => {
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImtpZGl5YUBnbWFpbC5jb20iLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTU2ODgxMjcyMn0.cr0DSayI6gfXbh9BFGS6lI7d_RvDXvFGUGRmeaUDodM'
+
+    chai
+      .request(app)
+      .post("/api/v1/trips")
+      .set("token", token)
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(403);
+        done();
+      });
+  });
+});
+it("should return trip not fund", done => {
+  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJlbWFpbCI6ImlzaGltd2VzdGV2ZW4xQGdtYWlsLmNvbSIsImlzX2FkbWluIjpmYWxzZSwiaWF0IjoxNTY4ODIyODQ2LCJleHAiOjE1Njk0Mjc2NDZ9._fO494C4r9fy_dKCGM2XeCsgByOeiOgIFr5PNPO6bdI'
+
+  chai
+    .request(app)
+    .post("/api/v1/trips/7/cancel")
+    .set("token", token)
+    .end((err, res) => {
+      expect(res.statusCode).to.equal(404);
+      done();
+    });
 });

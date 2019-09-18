@@ -5,20 +5,20 @@
   "main": "server.js",
   "scripts": {
     "test": "nyc --reporter=html --reporter=text mocha --require @babel/register --require @babel/polyfill --timeout 100000 server/test/ --exit",
-    "coverage":"nyc report --reporter=text-lcov | coveralls",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "start": "node server.js",
     "dev": "nodemon --exec babel-node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/izzett222/wayfarer-website.git"
+    "url": "https://github.com/StevenDerrick/Testing.git"
   },
-  "author": "Ishimwe Serge Izzeddin",
+  "author": "Stizo theonly",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/izzett222/wayfarer-website/issues"
+    "url": "https://github.com/StevenDerrick//issues"
   },
-  "homepage": "https://github.com/izzett222/wayfarer-website#readme",
+  "homepage": "https://github.com/StevenDerrick/Testing#readme",
   "dependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
@@ -37,6 +37,7 @@
     "chai-http": "^4.3.0",
     "cors": "^2.8.5",
     "coveralls": "^3.0.6",
+    "dotenv": "^8.1.0",
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-plugin-import": "^2.18.2",

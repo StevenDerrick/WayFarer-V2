@@ -26,7 +26,7 @@ export default class BookingControl {
         error: "you already booked this trip"
       });
     }
-    const trip = trips.find(c => {return c.trip_id === req.body.trip_id});
+    const trip = trips.find((c) => c.trip_id == req.body.trip_id);
     console.log(trip)
     console.log(req.body.trip_id)
     console.log(trips);

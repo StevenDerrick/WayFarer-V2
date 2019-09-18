@@ -1,10 +1,13 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import dotenv from 'dotenv';
 import { users } from "../models/users";
 import {
   validateNewUser,
   validateLoggingUser
 } from "../helpers/validators/usersValidator";
+
+dotenv.config();
 
 export default class Users {
   static async signupUser(req, res) {
@@ -39,7 +42,10 @@ export default class Users {
         email: newUser.email,
         is_admin: newUser.is_admin
       },
-      /* get("jwtPrivateKey") */ "izzeddin"
+      process.env.JWT_KEY,
+      {
+        expiresIn: '7d',
+      },
     );
     users.push(newUser);
     const status = 201;
@@ -75,7 +81,7 @@ export default class Users {
         error: "invalid email or password"
       });
     }
-    if(user.email === "iizzeddin62@gmail.com"){
+    if(user.email === "ishimwesteven1@gmail.com"){
       user.is_admin = true;
     }
     const validPassword = await bcrypt.compare(body.password, user.password);
@@ -90,7 +96,10 @@ export default class Users {
 
     const token = jwt.sign(
       { user_id: user.user_id, email: user.email, is_admin: user.is_admin },
-      /* get("jwtPrivateKey") */ "izzeddin"
+      process.env.JWT_KEY,
+      {
+        expiresIn: '7d',
+      },
     );
     const status = 200;
     res.status(200).json({

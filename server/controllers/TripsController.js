@@ -6,15 +6,12 @@ import {
 
 export default class TripsControl {
   static allTrips(req, res, next) {
-    if(trips.length === 0) return res.status(404).json({status:400,error:"not trips is available at the moment"})
-    const status = 200;
-    res.status(status).json({
-      status,
-      data: trips
-    });
+      res.status(200).json({
+        status: 200,
+        data: trips
+      });
   }
   static individualTrip(req, res, next) {
-    if(trips.length === 0) return res.status(404).json({status:400,error:"not trips is available at the moment"})
     const trip = trips.find(t => t.trip_id === parseInt(req.params.trip_id));
     if (!trip) {
       const status = 404;
@@ -63,8 +60,8 @@ export default class TripsControl {
     }
     const trip = trips.find(c => c.trip_id === parseInt(req.params.trip_id));
     if (!trip) {
-      return res.status(400).json({
-        status: 400,
+      return res.status(404).json({
+        status: 404,
         error: "trip not found"
       });
     }
