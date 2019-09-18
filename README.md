@@ -1,8 +1,8 @@
 # WayFarer-V2
 [![License Badge](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://opensource.org/licenses/MIT)
-[![Maintainability](https://api.codeclimate.com/v1/badges/18d87c1ef7bfc1cc5523/maintainability)](https://codeclimate.com/github/StevenDerrick/Testing/maintainability)
-[![Build Status](https://travis-ci.org/StevenDerrick/Testing.svg?branch=develop)](https://travis-ci.org/StevenDerrick/Testing)
-[![Coverage Status](https://coveralls.io/repos/github/StevenDerrick/Testing/badge.svg?branch=develop)](https://coveralls.io/github/StevenDerrick/Testing?branch=develop)
+[![Maintainability](https://api.codeclimate.com/v1/badges/109305e446e29a17dd14/maintainability)](https://codeclimate.com/github/StevenDerrick/WayFarer-V2/maintainability)
+[![Build Status](https://travis-ci.org/StevenDerrick/WayFarer-V2.svg?branch=develop)](https://travis-ci.org/StevenDerrick/WayFarer-V2)
+[![Coverage Status](https://coveralls.io/repos/github/StevenDerrick/WayFarer-V2/badge.svg?branch=develop)](https://coveralls.io/github/StevenDerrick/WayFarer-V2?branch=develop)
 [![Contributors](https://img.shields.io/badge/contributors-1-orange.svg?style=flat-square)]()
 
 

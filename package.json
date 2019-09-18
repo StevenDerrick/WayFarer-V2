@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/StevenDerrick/Testing.git"
+    "url": "https://github.com/StevenDerrick/WayFarer-V2.git"
   },
   "author": "Stizo theonly",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/StevenDerrick//issues"
   },
-  "homepage": "https://github.com/StevenDerrick/Testing#readme",
+  "homepage": "https://github.com/StevenDerrick/WayFarer-V2#readme",
   "dependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
