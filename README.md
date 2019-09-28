@@ -3,7 +3,6 @@
 [![codecov](https://codecov.io/gh/StevenDerrick/WayFarer-V2/branch/develop/graph/badge.svg)](https://codecov.io/gh/StevenDerrick/WayFarer-V2)
 [![Maintainability](https://api.codeclimate.com/v1/badges/109305e446e29a17dd14/maintainability)](https://codeclimate.com/github/StevenDerrick/WayFarer-V2/maintainability)
 [![Build Status](https://travis-ci.org/StevenDerrick/WayFarer-V2.svg?branch=develop)](https://travis-ci.org/StevenDerrick/WayFarer-V2)
-[![Coverage Status](https://coveralls.io/repos/github/StevenDerrick/WayFarer-V2/badge.svg?branch=develop)](https://coveralls.io/github/StevenDerrick/WayFarer-V2?branch=develop&kill_cache=1)
 [![Contributors](https://img.shields.io/badge/contributors-1-orange.svg?style=flat-square)]()
 
 
