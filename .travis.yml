@@ -4,9 +4,11 @@ node_js:
 cache:
   directories:
     - "node_modules"
+services:
+    - postgresql
 before_script:
-  - npm install
+  - psql -c 'create database development;' -U postgres
 script:
-  - npm test
+  - npm run test
 after_success:
-  - npm run coveralls 
+  - npm run coveralls

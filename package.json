@@ -4,10 +4,12 @@
   "description": "a public bus transportation booking service\r ---\r permalink: /index.html\r ---",
   "main": "server.js",
   "scripts": {
-    "test": "nyc --reporter=html --reporter=text mocha --require @babel/register --require @babel/polyfill --timeout 100000 server/test/ --exit",
+    "start": "npm run mockTest && babel-node server.js",
+    "test": "npm run mockTest && nyc --reporter=html --reporter=text mocha --require @babel/register --require @babel/polyfill --timeout 100000 server/test/ --exit",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "start": "node server.js",
-    "dev": "nodemon --exec babel-node server.js"
+    "dev": "nodemon --exec babel-node server.js",
+    "createTables": "babel-node ./server/models/tableCreator.js",
+    "mockTest": "babel-node ./server/models/mockData.js"
   },
   "repository": {
     "type": "git",
@@ -19,15 +21,22 @@
     "url": "https://github.com/StevenDerrick//issues"
   },
   "homepage": "https://github.com/StevenDerrick/WayFarer-V2#readme",
+  "nyc": {
+    "sourceMap": false,
+    "instrument": false
+  },
   "dependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
+    "@babel/helper-plugin-utils": "^7.0.0",
     "@babel/node": "^7.5.5",
+    "@babel/plugin-transform-regenerator": "^7.4.5",
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.5.5",
     "@babel/register": "^7.5.5",
     "@babel/runtime": "^7.5.5",
+    "babel-node": "0.0.1-security",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-airbnb": "^4.0.1",
     "bcrypt": "^3.0.6",
@@ -42,13 +51,25 @@
     "eslint-config-airbnb": "^17.1.1",
     "eslint-plugin-import": "^2.18.2",
     "express": "^4.17.1",
+    "find-up": "^4.1.0",
     "http": "0.0.0",
+    "istanbul-lib-instrument": "^3.3.0",
     "joi": "^14.3.1",
     "jsonwebtoken": "^8.5.1",
     "mocha": "^6.2.0",
     "morgan": "^1.9.1",
     "nodemon": "^1.19.1",
     "nyc": "^14.1.1",
-    "swagger-ui-express": "^4.0.7"
+    "pg": "^7.12.1",
+    "swagger-ui-express": "^4.0.7",
+    "test-exclude": "^5.2.3",
+    "validate": "^5.0.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.6.0",
+    "babel-plugin-istanbul": "^5.2.0",
+    "pmock": "^0.2.3",
+    "source-map-support": "^0.5.13",
+    "standard": "^14.3.1"
   }
 }

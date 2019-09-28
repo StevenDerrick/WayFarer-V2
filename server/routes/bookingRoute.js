@@ -1,11 +1,15 @@
 import express from "express";
-import bookings from "../controllers/BookingController";
-import autho from "../middleware/authorization/autho";
-import admin from "../middleware/authorization/admin";
+import { createBooking, allBookings, deleteBooking } from "../controllers/BookingController";
+import checkAuth from "../middleware/checkAuth";
+import checkBookingAll from '../middleware/checkBookingAll';
+import checkBookDelete from '../middleware/checkBookDelete';
+import checkBookCreate  from '../middleware/checkBookingCreate';
 
 const router = express.Router();
-router.get("/", [autho, admin], bookings.allBookings);
-router.post("/", autho, bookings.book);
-router.get("/:user_id", autho, bookings.userBookings);
-router.delete("/:id", autho, bookings.deleteBooking);
+
+router.get("/booking", [checkAuth, checkBookingAll], allBookings);
+router.post("/booking", [checkAuth, checkBookCreate], createBooking);
+router.delete("/booking/:id", [checkAuth, checkBookDelete], deleteBooking);
+
+
 export default router;

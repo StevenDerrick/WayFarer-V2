@@ -1,13 +1,19 @@
 import express from "express";
-
-import trips from "../controllers/TripsController";
-import autho from "../middleware/authorization/autho";
-import admin from "../middleware/authorization/admin";
+import { allTrips, createTrip, specificTrip, adminCancelTrip } from '../controllers/TripsController';
+import checkAuth from "../middleware/checkAuth";
+import checkAdmin from "../middleware/checkAdmin";
+import checkTripCreate from '../middleware/checkTripCreate';
+import checkTripSpec from '../middleware/checkTripSpec';
+import checkTripCancel from '../middleware/checkTripCancel';
+import checkTripAll from '../middleware/checkTripAll'
 
 const router = express.Router();
 
-router.get("/", autho, trips.allTrips);
-router.get("/:trip_id", autho, trips.individualTrip);
-router.post("/", [autho, admin], trips.newTrip);
-router.patch("/:trip_id/cancel", [autho, admin], trips.cancelTrip);
+
+router.post("/trips", [checkAuth, checkAdmin, checkTripCreate], createTrip);
+router.get("/trips/:trip_id", [checkAuth, checkTripSpec], specificTrip);
+router.patch("/trips/:trip_id/cancel", [checkAuth, checkAdmin, checkTripCancel], adminCancelTrip);
+router.get("/trips", [checkAuth, checkTripAll], allTrips);
+
+
 export default router;

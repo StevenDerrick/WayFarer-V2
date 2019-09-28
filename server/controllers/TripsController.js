@@ -1,79 +1,54 @@
-import { trips } from "../models/trips";
-import {
-  postTrip,
-  cancelValidation
-} from "../helpers/validators/tripsValidator";
+import { update, select, insert } from '../helpers/sqlQueries';
 
-export default class TripsControl {
-  static allTrips(req, res, next) {
-      res.status(200).json({
-        status: 200,
-        data: trips
-      });
-  }
-  static individualTrip(req, res, next) {
-    const trip = trips.find(t => t.trip_id === parseInt(req.params.trip_id));
-    if (!trip) {
-      const status = 404;
-      return res.status(status).json({
-        status,
-        error: "trip not found"
-      });
+export const createTrip = async (req, res) => {
+  class Trip {
+    constructor() {
+      this.seating_capacity = req.body.seating_capacity,
+      this.bus_licence_number = req.body.bus_licence_number,
+      this.available_seats = req.body.available_seats,
+      this.origin = req.body.origin,
+      this.destination = req.body.destination,
+      this.fare = req.body.fare,
+      this.trip_date = req.body.trip_date,
+      this.status = 'active'
     }
-    const status = 200;
-
-    res.status(200).json({
-      status,
-      data: trip
-    });
   }
 
-  static newTrip(req, res, next) {
-    const { body } = req;
-    const { error } = postTrip(body);
-    if (error) {
-      return res
-        .status(400)
-        .json({ status: 400, error: error.details[0].message });
-    }
+  const newTrip = new Trip();
 
-    const newTrip = {
-      trip_id: trips.length + 1,
-      seating_capacity: req.body.seating_capacity,
-      bus_license_number: req.body.bus_license_number,
-      origin: req.body.origin,
-      destination: req.body.destination,
-      trip_date: req.body.trip_date,
-      fare: req.body.fare,
-      status: "active"
-    };
-    trips.push(newTrip);
-    res.status(201).json({ status: 201, data: newTrip });
-  }
+  const rows2 = await insert('trips', 'seating_capacity, bus_licence_number, available_seats, origin, destination, fare, trip_date, status', '$1, $2, $3, $4, $5, $6, $7, $8',
+    [newTrip.seating_capacity, newTrip.bus_licence_number, newTrip.available_seats, newTrip.origin, newTrip.destination, newTrip.fare, newTrip.trip_date, newTrip.status]);
+  return res.status(201).json({
+    status: 201,
+    message: 'Trip Created Successfully',
+  });
 
-  static cancelTrip(req, res, next) {
-    const { error } = cancelValidation(req.body);
-    if (error) {
-      return res
-        .status(400)
-        .json({ status: 400, error: error.details[0].message });
-    }
-    const trip = trips.find(c => c.trip_id === parseInt(req.params.trip_id));
-    if (!trip) {
-      return res.status(404).json({
-        status: 404,
-        error: "trip not found"
-      });
-    }
-    if (trip.status === req.body.status) {
-      if (req.body.status === "cancelled") {
-        return res
-          .status(400)
-          .json({ status: 400, error: " trip already cancelled" });
-      }
-    }
+};
 
-    trip.status = req.body.status;
-    res.status(200).json({ status: 200, data: "trip cancelled successful" });
-  }
-}
+
+
+
+
+export const allTrips = async (req, res) => {
+  const rows = await select('trip_id, seating_capacity, available_seats, bus_licence_number, origin, destination, trip_date, fare, status', 'trips', `trip_id > 0`);
+  res.status(200).json({
+    status: 200,
+    data: rows,
+  });
+};
+export const specificTrip = async (req, res) => {
+  const rows = await select('trip_id, seating_capacity, available_seats, bus_licence_number, origin, destination, trip_date, status', 'trips', `trip_id='${req.params.trip_id}'`);
+  res.status(200).json({
+    status: 200,
+    data: rows[0],
+  });
+};
+export const adminCancelTrip = async (req, res) => {
+  await update('trips', `status='${'cancelled'}'`, `trip_id='${req.params.trip_id}'`);
+  res.status(200).json({
+    status: 200,
+    data: {
+      message: 'Trip Cancelled Successfully',
+    },
+  });
+};
