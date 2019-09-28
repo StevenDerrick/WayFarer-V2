@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "npm run mockTest && babel-node server.js",
-    "test": "npm run mockTest && nyc --reporter=html --reporter=text mocha --require @babel/register --require @babel/polyfill --timeout 100000 server/test/ --exit",
+    "test": "npm run mockTest && nyc  mocha --require @babel/register --require @babel/polyfill --timeout 100000 server/test/ --exit",
+    "test:local": "npm run mockTest && nyc --reporter=html --reporter=text mocha --require @babel/register --require @babel/polyfill --timeout 100000 server/test/ --exit",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "dev": "nodemon --exec babel-node server.js",
     "createTables": "babel-node ./server/models/tableCreator.js",
