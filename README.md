@@ -1,9 +1,10 @@
-<h1 align="center"> :vertical_traffic_light: :oncoming_bus: WayFarer_V2 :minibus: :busstop: </h1>
 [![License Badge](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![codecov](https://codecov.io/gh/StevenDerrick/WayFarer-V2/branch/develop/graph/badge.svg)](https://codecov.io/gh/StevenDerrick/WayFarer-V2)
 [![Maintainability](https://api.codeclimate.com/v1/badges/109305e446e29a17dd14/maintainability)](https://codeclimate.com/github/StevenDerrick/WayFarer-V2/maintainability)
 [![Build Status](https://travis-ci.org/StevenDerrick/WayFarer-V2.svg?branch=develop)](https://travis-ci.org/StevenDerrick/WayFarer-V2)
 [![Contributors](https://img.shields.io/badge/contributors-1-orange.svg?style=flat-square)]()
+
+<h1 align="center"> :vertical_traffic_light: :oncoming_bus: WayFarer_V2 :minibus: :busstop: </h1>
 
 > Wayfarer is an online Public bus transportation service.
 
