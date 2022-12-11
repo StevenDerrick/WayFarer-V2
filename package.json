@@ -51,7 +51,7 @@
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-plugin-import": "^2.18.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "find-up": "^4.1.0",
     "http": "0.0.0",
     "istanbul-lib-instrument": "^3.3.0",
